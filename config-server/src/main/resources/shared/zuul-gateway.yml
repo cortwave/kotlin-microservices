@@ -1,0 +1,16 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${vcap.services.eureka-service.credentials.uri:http://127.0.0.1:8761}/eureka/
+  instance:
+    metadata-map:
+      instanceId: ${spring.application.name}:${random.value}
+server:
+  port: 8888
+
+
+zuul:
+  routes:
+    facade:
+      path: /**
+      service-id: agregator

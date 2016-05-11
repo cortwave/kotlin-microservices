@@ -1,0 +1,42 @@
+buildscript {
+    ext {
+        springBootVersion = '1.0.6.RELEASE'
+        kotlinVersion = "1.0.1"
+    }
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+    }
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+
+    ext {
+        springVersion = '1.0.6.RELEASE'
+    }
+}
+
+subprojects {
+    apply plugin: 'kotlin'
+
+    jar {
+        archiveName = project.name + ".jar"
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        compile "org.jetbrains.kotlin:kotlin-stdlib:1.0.1"
+    }
+
+}
+
