@@ -1,0 +1,16 @@
+version: '2'
+services:
+  zuul-gateway:
+    image: zuul-gateway
+    ports:
+      - "8888:8888"
+  config-server:
+    image: config-server
+  eureka-server:
+    image: eureka-server
+    ports:
+      - "8761:8761"
+  agregator:
+    image: agregator
+  data-service:
+    image: data-service

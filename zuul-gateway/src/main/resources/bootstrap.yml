@@ -3,5 +3,5 @@ spring:
     name: zuul-gateway
   cloud:
     config:
-      uri: http://localhost:8181
+      uri: http://config-server:8181
       fail-fast: true

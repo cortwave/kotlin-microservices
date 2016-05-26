@@ -9,6 +9,7 @@ buildscript {
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.3.5.RELEASE")
     }
 }
 
@@ -25,6 +26,7 @@ allprojects {
 
 subprojects {
     apply plugin: 'kotlin'
+    apply plugin: 'spring-boot'
 
     jar {
         archiveName = project.name + ".jar"
@@ -36,6 +38,12 @@ subprojects {
 
     dependencies {
         compile "org.jetbrains.kotlin:kotlin-stdlib:1.0.1"
+    }
+
+    task dockerBuild << {
+        exec {
+            commandLine 'docker', 'build','--force-rm=true', "--tag='${project.name}'", '.'
+        }
     }
 
 }
